@@ -84,7 +84,8 @@ let view (model : Model) (dispatch : Msg -> unit) =
         [ Content.content [ Content.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
             [ Heading.h3 [] [ str ("Press buttons to manipulate counter: " + show model) ] ]
           Columns.columns []
-            [ Column.column [] [ button "-" (fun _ -> dispatch Decrement) ]
+            [
+              Column.column [] [ button  "-" (fun _ -> dispatch Decrement) ]
               Column.column [] [ button "+" (fun _ -> dispatch Increment) ] ] ]
 
       Footer.footer [ ]

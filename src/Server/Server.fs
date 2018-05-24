@@ -33,13 +33,13 @@ let configureApp (app:IApplicationBuilder) =
   app.UseDefaultFiles()
 
 let app = application {
-    url ("http://0.0.0.0:" + port.ToString() + "/")
-    router webApp
-    app_config configureApp
-    memory_cache
-    use_static publicPath
-    service_config configureSerialization
-    use_gzip
+  url ("http://0.0.0.0:" + port.ToString() + "/")
+  router webApp
+  app_config configureApp
+  memory_cache
+  use_static publicPath
+  service_config configureSerialization
+  use_gzip
 }
 
 run app
