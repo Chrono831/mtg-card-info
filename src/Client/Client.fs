@@ -57,7 +57,7 @@ let safeComponents =
     |> intersperse (str ", ")
     |> span [ ]
 
-  p [ ]
+  p [ ClassName "far fa-baseball" ]
     [ strong [] [ str "SAFE Template" ]
       str " powered by: "
       components ]
@@ -73,20 +73,24 @@ let button txt onClick =
       Button.OnClick onClick ]
     [ str txt ]
 
+// <dom element> [ properties ] [ sub-elements ]
+// button is a weird custom element that
 let view (model : Model) (dispatch : Msg -> unit) =
-  div []
+  div [ Style [ BackgroundColor "Red"] ]
     [ Navbar.navbar [ Navbar.Color IsPrimary ]
         [ Navbar.Item.div [ ]
             [ Heading.h2 [ ]
                 [ str "SAFE Template" ] ] ]
 
+      i [ClassName "far fa-baseball"] [
+        button  "" (fun _ -> dispatch Decrement) ]
+
       Container.container []
         [ Content.content [ Content.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
             [ Heading.h3 [] [ str ("Press buttons to manipulate counter: " + show model) ] ]
-          Columns.columns []
-            [
-              Column.column [] [ button  "-" (fun _ -> dispatch Decrement) ]
-              Column.column [] [ button "+" (fun _ -> dispatch Increment) ] ] ]
+          Columns.columns [] [
+            Column.column [] [ button  "-" (fun _ -> dispatch Decrement) ]
+            Column.column [] [ button "+" (fun _ -> dispatch Increment) ] ] ]
 
       Footer.footer [ ]
         [ Content.content [ Content.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
