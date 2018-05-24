@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -eu
 
@@ -29,7 +29,7 @@ run() {
 
 echo "Executing Paket..."
 
-FILE='paket.lock'     
+FILE='paket.lock'
 if [ -f $FILE ]; then
    echo "paket.lock file found, restoring packages..."
    run $PAKET_EXE restore
@@ -39,4 +39,3 @@ else
 fi
 
 run $FAKE_EXE "$@" $FSIARGS $FSIARGS2 build.fsx
-
